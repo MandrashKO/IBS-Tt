@@ -1,5 +1,4 @@
-from selenium import webdriver
-from selenium.webdriver import ChromeOptions
+
 from bs4 import BeautifulSoup
 import requests
 from lxml import etree

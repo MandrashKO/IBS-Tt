@@ -1,4 +1,4 @@
-from libs.reqparser import get_api_params
+from libs.reqParser import get_api_params
 from libs.pages.apiPage import PageApi
 
 
@@ -25,8 +25,8 @@ def test_uiApi(setup_driver, number, site,method ,locator):
     except:
         raise "Не удалось получить данные"
     try:
-        confirmation = api.checkApiResult(method, site)
+        request_json,response_json,request_code,response_code = api.checkApiResult(method, site)
     except:
         raise "не получилось получить результат"
 
-    assert confirmation == True, "Данные не соответствуют"
+    assert request_json == response_json  and  request_code == response_code , "Данные не соответствуют"

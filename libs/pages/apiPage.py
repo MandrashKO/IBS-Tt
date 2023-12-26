@@ -36,7 +36,6 @@ class PageApi(Page):
 
         if xpath is not None:
             self.api.granddad = self.findElement(xpath)
-            print(self.api.granddad)
             args = self.findElements(element=self.api.granddad, xpath=f"({xpath})//*")
 
 
@@ -63,9 +62,4 @@ class PageApi(Page):
             request_content = json.loads(request.content)
         except:
             request_content = {}
-        print(self.api.responseResult)
-        print(request_content)
-        if self.api.responseResult == request_content and int(self.api.response.text) == request.status_code:
-            return True
-        else:
-            return False
+        return self.api.responseResult, request_content, int(self.api.response.text), request.status_code
